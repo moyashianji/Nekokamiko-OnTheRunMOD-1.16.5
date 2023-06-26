@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "nekokamiko:block/block_cheat_glass"
+  }
+
+}
