@@ -1,14 +1,16 @@
 package com.Moyashi.nekokamiko.entity;
 
-import net.minecraft.entity.*;
-import net.minecraft.entity.ai.goal.*;
-import net.minecraft.entity.merchant.villager.AbstractVillagerEntity;
-import net.minecraft.entity.monster.MonsterEntity;
+import net.minecraft.entity.AgeableEntity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.entity.ai.goal.LookAtGoal;
+import net.minecraft.entity.ai.goal.LookRandomlyGoal;
+import net.minecraft.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.MerchantOffer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
@@ -19,10 +21,10 @@ import javax.annotation.Nullable;
 
 @Mod.EventBusSubscriber(modid = "nekokamiko", bus = Mod.EventBusSubscriber.Bus.MOD)
 
-public class HunterEntity extends TameableEntity {
+public class SkeltonHunter extends TameableEntity {
     private int attackTimer;
 
-    public HunterEntity(EntityType<? extends HunterEntity> type, World worldIn) {
+    public SkeltonHunter(EntityType<? extends SkeltonHunter> type, World worldIn) {
         super(type, worldIn);
         this.noCulling = true;
     }

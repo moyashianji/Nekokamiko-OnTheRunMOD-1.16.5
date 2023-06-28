@@ -1,14 +1,16 @@
 package com.Moyashi.nekokamiko.entity;
 
-import net.minecraft.entity.*;
-import net.minecraft.entity.ai.goal.*;
-import net.minecraft.entity.merchant.villager.AbstractVillagerEntity;
-import net.minecraft.entity.monster.MonsterEntity;
+import net.minecraft.entity.AgeableEntity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.entity.ai.goal.LookAtGoal;
+import net.minecraft.entity.ai.goal.LookRandomlyGoal;
+import net.minecraft.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.MerchantOffer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
@@ -19,10 +21,10 @@ import javax.annotation.Nullable;
 
 @Mod.EventBusSubscriber(modid = "nekokamiko", bus = Mod.EventBusSubscriber.Bus.MOD)
 
-public class HunterEntity extends TameableEntity {
+public class FatHunter extends TameableEntity {
     private int attackTimer;
 
-    public HunterEntity(EntityType<? extends HunterEntity> type, World worldIn) {
+    public FatHunter(EntityType<? extends FatHunter> type, World worldIn) {
         super(type, worldIn);
         this.noCulling = true;
     }
@@ -30,8 +32,8 @@ public class HunterEntity extends TameableEntity {
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
         return MobEntity.createMobAttributes()
                 .add(Attributes.FOLLOW_RANGE, 64)
-                .add(Attributes.MOVEMENT_SPEED, 0.5F)
-                .add(Attributes.ATTACK_DAMAGE, 10)
+                .add(Attributes.MOVEMENT_SPEED, 0.3F)
+                .add(Attributes.ATTACK_DAMAGE, 14)
                 .add(Attributes.ATTACK_SPEED, 6);
     }
 
@@ -50,7 +52,7 @@ public class HunterEntity extends TameableEntity {
             if (this.canSee(target)) {
                 // 視界にプレイヤーがいる場合は追跡する
                 this.getNavigation().moveTo(target, 1.0);
-                if (this.attackTimer <= 0 && this.distanceTo(target) < 1.0) {
+                if (this.attackTimer <= 0 && this.distanceTo(target) < 3.0) {
                     // プレイヤーに攻撃する
                     this.attackTimer = 20;
                     this.swing(Hand.MAIN_HAND);

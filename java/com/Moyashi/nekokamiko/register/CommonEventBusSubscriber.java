@@ -1,6 +1,6 @@
 package com.Moyashi.nekokamiko.register;
 
-import com.Moyashi.nekokamiko.entity.HunterEntity;
+import com.Moyashi.nekokamiko.entity.*;
 import com.Moyashi.nekokamiko.register.TypesRegistry;
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -21,6 +21,11 @@ public class CommonEventBusSubscriber {
 
         DeferredWorkQueue.runLater(()-> {
             GlobalEntityTypeAttributes.put(TypesRegistry.CHASE_ENTITY.get(), HunterEntity.registerAttributes().build());//さっき作ったステータスを実装するよ
+            GlobalEntityTypeAttributes.put(TypesRegistry.SILVER_ENTITY.get(), SilverHunter.registerAttributes().build());//さっき作ったステータスを実装するよ
+            GlobalEntityTypeAttributes.put(TypesRegistry.PHANTOM_ENTITY.get(), PhantomHunter.registerAttributes().build());//さっき作ったステータスを実装するよ
+            GlobalEntityTypeAttributes.put(TypesRegistry.FAT_ENTITY.get(), FatHunter.registerAttributes().build());//さっき作ったステータスを実装するよ
+            GlobalEntityTypeAttributes.put(TypesRegistry.BIG_ENTITY.get(), BigHunter.registerAttributes().build());//さっき作ったステータスを実装するよ
+            GlobalEntityTypeAttributes.put(TypesRegistry.SMALL_ENTITY.get(), SmallHunter.registerAttributes().build());//さっき作ったステータスを実装するよ
 
         });
 
