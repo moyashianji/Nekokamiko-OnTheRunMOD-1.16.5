@@ -35,7 +35,9 @@ public class SmallHunter extends MonsterEntity {
                 .add(Attributes.FOLLOW_RANGE, 64)
                 .add(Attributes.MOVEMENT_SPEED, 0.5F)
                 .add(Attributes.ATTACK_DAMAGE, 10)
-                .add(Attributes.ATTACK_SPEED, 6);
+                .add(Attributes.ATTACK_SPEED, 6)
+                .add(Attributes.MAX_HEALTH, 100);
+
     }
 
     @Override
