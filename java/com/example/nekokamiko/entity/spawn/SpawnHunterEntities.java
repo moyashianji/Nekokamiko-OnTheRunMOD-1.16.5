@@ -11,6 +11,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 
+import static com.example.nekokamiko.config.FileVariable.*;
+
 @Mod.EventBusSubscriber(modid = "nekokamiko", bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class SpawnHunterEntities {
 
@@ -19,32 +21,32 @@ public class SpawnHunterEntities {
 
         event.getSpawns().addSpawn(EntityClassification.MONSTER
                 , new MobSpawnInfo.Spawners(TypesRegistry.BIG_ENTITY.get()
-                        , 100
-                        ,2
-                        ,4));
+                        , BigHunterRate
+                        ,BigHunterMin
+                        ,BigHunterMax));
 
         event.getSpawns().addSpawn(EntityClassification.MONSTER
                 , new MobSpawnInfo.Spawners(TypesRegistry.SILVER_ENTITY.get()
-                        , 100
-                        ,2
-                        ,4));
+                        , HunterRate
+                        ,HunterMin
+                        ,HunterMax));
 
         event.getSpawns().addSpawn(EntityClassification.MONSTER
                 , new MobSpawnInfo.Spawners(TypesRegistry.PHANTOM_ENTITY.get()
-                        , 100
-                        ,2
-                        ,4));
+                        , PhantomHunterRate
+                        ,PhantomHunterMin
+                        ,PhantomHunterMax));
 
         event.getSpawns().addSpawn(EntityClassification.MONSTER
                 , new MobSpawnInfo.Spawners(TypesRegistry.SMALL_ENTITY.get()
-                        , 100
-                        ,2
-                        ,4));
+                        , SmallHunterRate
+                        ,SmallHunterMin
+                        ,SmallHunterMax));
         event.getSpawns().addSpawn(EntityClassification.MONSTER
                 , new MobSpawnInfo.Spawners(TypesRegistry.SKELTON_ENTITY.get()
-                        , 100
-                        ,2
-                        ,4));
+                        , SkeletonHunterRate
+                        ,SkeletonHunterMin
+                        ,SkeletonHunterMax));
 
 
 

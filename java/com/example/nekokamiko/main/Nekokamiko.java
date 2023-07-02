@@ -15,6 +15,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import static com.example.nekokamiko.config.ConfigFile.generateConfigFile;
+import static com.example.nekokamiko.config.FileVariable.extractDoubleFromTextFile;
 
 // The onValue here should match an entry in the META-INF/mods.toml file
 @Mod(Nekokamiko.MOD_ID)

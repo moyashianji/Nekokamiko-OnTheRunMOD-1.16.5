@@ -20,6 +20,8 @@ import net.minecraftforge.fml.common.Mod;
 
 import javax.annotation.Nullable;
 
+import static com.example.nekokamiko.config.FileVariable.*;
+
 @Mod.EventBusSubscriber(modid = "nekokamiko", bus = Mod.EventBusSubscriber.Bus.MOD)
 
 public class SmallHunter extends MonsterEntity {
@@ -36,7 +38,7 @@ public class SmallHunter extends MonsterEntity {
                 .add(Attributes.MOVEMENT_SPEED, 0.5F)
                 .add(Attributes.ATTACK_DAMAGE, 10)
                 .add(Attributes.ATTACK_SPEED, 6)
-                .add(Attributes.MAX_HEALTH, 100);
+                .add(Attributes.MAX_HEALTH, SmallHunterHp);
 
     }
 
@@ -50,11 +52,11 @@ public class SmallHunter extends MonsterEntity {
 
     public void tick() {
         super.tick();
-        PlayerEntity target = this.level.getNearestPlayer(this, 30.0);
+        PlayerEntity target = this.level.getNearestPlayer(this, SmallHunterDistance);
         if (target != null) {
             if (this.canSee(target)) {
                 // 視界にプレイヤーがいる場合は追跡する
-                this.getNavigation().moveTo(target, 1.0);
+                this.getNavigation().moveTo(target, SmallHunterSpeed);
                 if (this.attackTimer <= 0 && this.distanceTo(target) < 1.0) {
                     // プレイヤーに攻撃する
                     this.attackTimer = 20;

@@ -18,6 +18,8 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import static com.example.nekokamiko.config.FileVariable.*;
+
 public class SkeltonHunter extends MonsterEntity implements IRangedAttackMob {
     private int attackCooldown;
 
@@ -38,10 +40,11 @@ public class SkeltonHunter extends MonsterEntity implements IRangedAttackMob {
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
         return MobEntity.createMobAttributes()
-                .add(Attributes.FOLLOW_RANGE, 64.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.5D)
+                .add(Attributes.FOLLOW_RANGE, SkeletonHunterDistance)
+                .add(Attributes.MOVEMENT_SPEED, SkeletonHunterSpeed)
                 .add(Attributes.ATTACK_DAMAGE, 10.0D)
-                .add(Attributes.ATTACK_SPEED, 6.0D);
+                .add(Attributes.ATTACK_SPEED, 6.0D)
+                .add(Attributes.MAX_HEALTH, SkeletonHunterHp);
     }
 
     public void performRangedAttack(LivingEntity target, float distanceFactor) {

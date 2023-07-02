@@ -5,6 +5,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.AbstractGui;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -13,6 +14,8 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import static com.example.nekokamiko.config.FileVariable.extractDoubleFromTextFile;
 
 @Mod.EventBusSubscriber(modid = "nekokamiko", bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class onImageGUI {
@@ -67,6 +70,15 @@ public class onImageGUI {
     public static void onPlayerJoin(PlayerEvent.PlayerLoggedInEvent event) {
         // プレイヤーがログインした際に疑似時刻を更新する
         formattedTime = sdf.format(new Date());
+        System.out.println("aaaaaaaaaaaaaaaaaaaaiaiaiaia");
+        System.out.println(event.getPlayer().getUUID());
+
+
+
+        String message = "Nekokamiko";
+        StringTextComponent textComponent = new StringTextComponent(message);
+        event.getPlayer().sendMessage(textComponent,event.getPlayer().getUUID());
+        extractDoubleFromTextFile();
     }
 
     public static void register() {

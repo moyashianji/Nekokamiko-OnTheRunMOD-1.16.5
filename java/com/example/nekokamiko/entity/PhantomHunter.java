@@ -40,6 +40,8 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.common.Mod;
 
+import static com.example.nekokamiko.config.FileVariable.*;
+
 @Mod.EventBusSubscriber(modid = "nekokamiko", bus = Mod.EventBusSubscriber.Bus.MOD)
 public class PhantomHunter extends FlyingEntity implements IMob {
     private static final DataParameter<Integer> ID_SIZE = EntityDataManager.defineId(com.example.nekokamiko.entity.PhantomHunter.class, DataSerializers.INT);
@@ -52,7 +54,8 @@ public class PhantomHunter extends FlyingEntity implements IMob {
                 .add(Attributes.FOLLOW_RANGE, 64)
                 .add(Attributes.MOVEMENT_SPEED, 0.5F)
                 .add(Attributes.ATTACK_DAMAGE, 10)
-                .add(Attributes.ATTACK_SPEED, 6);
+                .add(Attributes.ATTACK_SPEED, 6)
+                .add(Attributes.MAX_HEALTH, PhantomHunterHp);
     }
 
     public PhantomHunter(EntityType<? extends com.example.nekokamiko.entity.PhantomHunter> p_i50200_1_, World p_i50200_2_) {
@@ -111,11 +114,11 @@ public class PhantomHunter extends FlyingEntity implements IMob {
 
     public void tick() {
             super.tick();
-            PlayerEntity target = this.level.getNearestPlayer(this, 30.0);
+            PlayerEntity target = this.level.getNearestPlayer(this, PhantomHunterDistance);
             if (target != null) {
                 if (this.canSee(target)) {
                     // 視界にプレイヤーがいる場合は追跡する
-                    this.getNavigation().moveTo(target, 1.0);
+                    this.getNavigation().moveTo(target, 10.0);
                     if (this.attackTimer <= 0 && this.distanceTo(target) < 1.0) {
                         // プレイヤーに攻撃する
                         this.attackTimer = 20;
@@ -271,7 +274,7 @@ public class PhantomHunter extends FlyingEntity implements IMob {
     }
 
     class MoveHelperController extends MovementController {
-        private float speed = 0.3F;
+        private double speed = PhantomHunterSpeed; //ここがスピード
 
         public MoveHelperController(MobEntity p_i48801_2_) {
             super(p_i48801_2_);
@@ -280,7 +283,7 @@ public class PhantomHunter extends FlyingEntity implements IMob {
         public void tick() {
             if (com.example.nekokamiko.entity.PhantomHunter.this.horizontalCollision) {
                 com.example.nekokamiko.entity.PhantomHunter.this.yRot += 180.0F;
-                this.speed = 0.4F;
+                this.speed = 0.4;
             }
 
             float f = (float)(com.example.nekokamiko.entity.PhantomHunter.this.moveTargetPoint.x - com.example.nekokamiko.entity.PhantomHunter.this.getX());
@@ -299,9 +302,9 @@ public class PhantomHunter extends FlyingEntity implements IMob {
             com.example.nekokamiko.entity.PhantomHunter.this.yRot = MathHelper.approachDegrees(f5, f6, 4.0F) - 90.0F;
             com.example.nekokamiko.entity.PhantomHunter.this.yBodyRot = com.example.nekokamiko.entity.PhantomHunter.this.yRot;
             if (MathHelper.degreesDifferenceAbs(f3, com.example.nekokamiko.entity.PhantomHunter.this.yRot) < 3.0F) {
-                this.speed = MathHelper.approach(this.speed, 1.8F, 0.005F * (1.8F / this.speed));
+                this.speed = MathHelper.approach((float) this.speed, 1.8F, (float) (0.005F * (1.8F / this.speed)));
             } else {
-                this.speed = MathHelper.approach(this.speed, 0.2F, 0.025F);
+                this.speed = MathHelper.approach((float) this.speed, 0.2F, 0.025F);
             }
 
             float f7 = (float)(-(MathHelper.atan2((double)(-f1), d0) * (double)(180F / (float)Math.PI)));

@@ -27,6 +27,8 @@ import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Mod;
 
+import static com.example.nekokamiko.config.FileVariable.*;
+
 @Mod.EventBusSubscriber(modid = "nekokamiko", bus = Mod.EventBusSubscriber.Bus.MOD)
 public class SilverHunter extends MonsterEntity {
 
@@ -37,11 +39,11 @@ public class SilverHunter extends MonsterEntity {
     }
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
         return MobEntity.createMobAttributes()
-                .add(Attributes.FOLLOW_RANGE, 64)
-                .add(Attributes.MOVEMENT_SPEED, 0.5F)
+                .add(Attributes.FOLLOW_RANGE, HunterDistance)
+                .add(Attributes.MOVEMENT_SPEED, HunterSpeed)
                 .add(Attributes.ATTACK_DAMAGE, 10)
                 .add(Attributes.ATTACK_SPEED, 6)
-                .add(Attributes.MAX_HEALTH, 100);
+                .add(Attributes.MAX_HEALTH, HunterHp);
     }
     protected void registerGoals() {
         this.friendsGoal = new SilverHunter.SummonSilverfishGoal(this);

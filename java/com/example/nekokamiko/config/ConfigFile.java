@@ -58,7 +58,7 @@ public class ConfigFile {
                 writer.write("\n" +
                         "\tMax\t:4");
                 writer.write("\n" +
-                        "\tDistance\t:64");
+                        "\tDistance\t:3");
                 writer.write("\n"+
                         "\u30fb\u5c0f\u3055\u3044\u30cf\u30f3\u30bf\u30fc");
                 writer.write("\n" +
@@ -72,13 +72,13 @@ public class ConfigFile {
                 writer.write("\n" +
                         "\tMax\t:4");
                 writer.write("\n" +
-                        "\tDistance\t:64");
+                        "\tDistance\t:30");
                 writer.write("\n"+
                         "\u30fb\u30d5\u30a1\u30f3\u30c8\u30e0\u30cf\u30f3\u30bf\u30fc");
                 writer.write("\n" +
                         "\tHP\t:100");
                 writer.write("\n" +
-                        "\tSpeed\t:0.4");
+                        "\tSpeed\t:0.3");
                 writer.write("\n" +
                         "\tRate\t:100");
                 writer.write("\n" +
@@ -86,11 +86,11 @@ public class ConfigFile {
                 writer.write("\n" +
                         "\tMax\t:4");
                 writer.write("\n" +
-                        "\tDistance\t:64");
+                        "\tDistance\t:30");
                 writer.write("\n"+
                         "\u30fb\u30b9\u30b1\u30eb\u30c8\u30f3\u30cf\u30f3\u30bf\u30fc");
                 writer.write("\n" +
-                        "\tHP\t:100");
+                        "\tHP\t:10");
                 writer.write("\n" +
                         "\tSpeed\t:0.5");
                 writer.write("\n" +

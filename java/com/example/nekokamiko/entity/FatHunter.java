@@ -35,7 +35,8 @@ public class FatHunter extends MonsterEntity {
                 .add(Attributes.FOLLOW_RANGE, 64)
                 .add(Attributes.MOVEMENT_SPEED, 0.3F)
                 .add(Attributes.ATTACK_DAMAGE, 14)
-                .add(Attributes.ATTACK_SPEED, 6);
+                .add(Attributes.ATTACK_SPEED, 6)
+                .add(Attributes.MAX_HEALTH, 1);
     }
 
     @Override
